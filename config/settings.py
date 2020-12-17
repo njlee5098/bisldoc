@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pybo.apps.PyboConfig',
     'common.apps.CommonConfig',
+    'map.apps.MapConfig',
+    'prescription.apps.PrescriptionConfig',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +131,6 @@ STATICFILES_DIRS = [
 # 로그인 / 로그아웃 성공후 이동하는 URL
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+MEDIA_URL = '/prescDir/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'prescDir')

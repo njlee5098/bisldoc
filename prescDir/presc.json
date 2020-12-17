@@ -1,0 +1,237 @@
+{
+    "version": "V2",
+    "requestId": "e6986cab-5660-4cff-8a71-75b992b244d6",
+    "timestamp": 1608127770440,
+    "images": [
+        {
+            "uid": "7f994db560d34bab83a296f2a768cd1d",
+            "name": "demo",
+            "inferResult": "SUCCESS",
+            "message": "SUCCESS",
+            "matchedTemplate": {
+                "id": 5909,
+                "name": "bisldoc_prescription_template"
+            },
+            "validationResult": {
+                "result": "NO_REQUESTED"
+            },
+            "title": {
+                "name": "\ucc98\ubc29\uc804",
+                "boundingPoly": {
+                    "vertices": [
+                        {
+                            "x": 1077.0,
+                            "y": 419.0
+                        },
+                        {
+                            "x": 1346.0,
+                            "y": 412.0
+                        },
+                        {
+                            "x": 1349.0,
+                            "y": 492.0
+                        },
+                        {
+                            "x": 1079.0,
+                            "y": 500.0
+                        }
+                    ]
+                },
+                "inferText": "\ucc98\ubc29\uc804",
+                "inferConfidence": 0.9869649
+            },
+            "fields": [
+                {
+                    "name": "drug1",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 517.0,
+                                "y": 1322.0
+                            },
+                            {
+                                "x": 750.0,
+                                "y": 1322.0
+                            },
+                            {
+                                "x": 750.0,
+                                "y": 1371.0
+                            },
+                            {
+                                "x": 517.0,
+                                "y": 1371.0
+                            }
+                        ]
+                    },
+                    "inferText": "\ub514\uc5d0\ud0c0\ubbfc \uc815",
+                    "inferConfidence": 0.99958086,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug2",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 537.0,
+                                "y": 1388.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1388.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1440.0
+                            },
+                            {
+                                "x": 537.0,
+                                "y": 1440.0
+                            }
+                        ]
+                    },
+                    "inferText": "\uc288\uac00\ud39c \uc815",
+                    "inferConfidence": 0.9994743,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug3",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 537.0,
+                                "y": 1454.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1454.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1503.0
+                            },
+                            {
+                                "x": 537.0,
+                                "y": 1503.0
+                            }
+                        ]
+                    },
+                    "inferText": "\uc5d8\ub514\uc5d8 \uc815",
+                    "inferConfidence": 0.9995651,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug4",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 537.0,
+                                "y": 1519.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1519.0
+                            },
+                            {
+                                "x": 728.0,
+                                "y": 1569.0
+                            },
+                            {
+                                "x": 537.0,
+                                "y": 1569.0
+                            }
+                        ]
+                    },
+                    "inferText": "\uc62c\ub9ac\uc5e3 \uc815",
+                    "inferConfidence": 0.9994102,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug5",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 231.05406,
+                                "y": 1582.2095
+                            },
+                            {
+                                "x": 1029.6008,
+                                "y": 1583.2974
+                            },
+                            {
+                                "x": 1029.683,
+                                "y": 1645.791
+                            },
+                            {
+                                "x": 231.11569,
+                                "y": 1644.7223
+                            }
+                        ]
+                    },
+                    "inferText": "",
+                    "inferConfidence": 0.0,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug6",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 235.27617,
+                                "y": 1644.7279
+                            },
+                            {
+                                "x": 1025.5249,
+                                "y": 1645.7854
+                            },
+                            {
+                                "x": 1025.6069,
+                                "y": 1708.2826
+                            },
+                            {
+                                "x": 235.3379,
+                                "y": 1707.2439
+                            }
+                        ]
+                    },
+                    "inferText": "",
+                    "inferConfidence": 0.0,
+                    "type": "NORMAL"
+                },
+                {
+                    "name": "drug7",
+                    "valueType": "ALL",
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "x": 239.49847,
+                                "y": 1707.2493
+                            },
+                            {
+                                "x": 1029.765,
+                                "y": 1708.288
+                            },
+                            {
+                                "x": 1029.8525,
+                                "y": 1774.9551
+                            },
+                            {
+                                "x": 239.56445,
+                                "y": 1773.9365
+                            }
+                        ]
+                    },
+                    "inferText": "",
+                    "inferConfidence": 0.0,
+                    "type": "NORMAL"
+                }
+            ]
+        }
+    ],
+    "uploaded_file_url": "/prescDir/%EC%B2%98%EB%B0%A9%EC%A0%84%20%EC%99%84%EC%84%B1%20%EC%83%98%ED%94%8C_1_ilcsgOc.png"
+}

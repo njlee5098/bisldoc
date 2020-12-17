@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align: center">처방 의약품 조회</h1>
+        <p></p>
+        {% if exist %}
+        <table class="center">
+            <tr>
+                <th>#</th>
+                <th>약물</th>
+                <th>설명</th>
+            </tr>
+
+            {% for field in fields %}
+            <tr>
+                <th>{{ forloop.counter }}</th>
+                <th>{{ field.inferText }}</th>
+                <th>{{ field.inferText }}은 이러한 약물입니다.</th>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% else %}
+        <p style="text-align: center">처방전을 업로드 해주세요.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+</form>
+
+{% endblock %}

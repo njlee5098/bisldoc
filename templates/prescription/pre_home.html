@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align: center">처방받은 의약품 검색하기</h1>
+        <p style="text-align: center">처방전을 업로드하시면 처방받은 의약품 목록과 함께 약에 대한 세부 정보를 확인하실 수 있습니다.</p>
+    </div>
+</div>
+
+
+<div style="align-items: center; justify-content: center">
+    <input type="button" value="처방전 업로드하기" onclick="location.href='upload/'">
+</div>
+{% endblock %}

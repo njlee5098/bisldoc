@@ -1,0 +1,137 @@
+{% extends 'map_clickable.html' %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>병원 검색</h1>
+        <p>병원을 검색해주세요.</p>
+    </div>
+</div>
+<div class="'container">
+    <div class="row justify-content-around">
+        <div class="col-4 input-group">
+            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="searchForm" method="get" action="{% url 'map:map' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+</form>
+<!--데이터: {{ context_json }}-->
+
+{% endblock %}
+
+
+{% block script %}
+
+
+<script type='text/javascript'>
+$(document).ready(function(){
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#searchForm").submit();
+    });
+});
+</script>
+
+<br><br>
+
+<div class="row justify-content-around">
+<div id="map" style="width:75%;height:1000px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e745bdef31ee08f01b4b787b9dea8cb"></script>
+<script>
+
+// custom codes
+var data = JSON.parse("{{ context_json|escapejs }}")
+
+var map_address = format("https://map.kakao.com/link/map/{0},{1},{2}",
+    data['hospital_name'], data['latitude'], data['longitude'])
+
+var map_route = format("https://map.kakao.com/link/to/{0},{1},{2}",
+    data['hospital_name'], data['latitude'], data['longitude'])
+
+function format() { var args = Array.prototype.slice.call (arguments, 1); return arguments[0].replace (/\{(\d+)\}/g, function (match, index) { return args[index]; }); }
+
+// Map code starts
+var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+    mapOption = {
+        center: new kakao.maps.LatLng(data['latitude'], data['longitude']), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 지도에 마커를 표시합니다
+var marker = new kakao.maps.Marker({
+    map: map,
+    position: new kakao.maps.LatLng(data['latitude'], data['longitude'])
+});
+
+// 커스텀 오버레이에 표시할 컨텐츠 입니다
+// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+// 별도의 이벤트 메소드를 제공하지 않습니다
+var content = '<div class="wrap">' +
+            '    <div class="info">' +
+            '        <div class="title">' +
+            '            {0}' +
+            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+            '        </div>' +
+            '        <div class="body">' +
+            '            <div class="desc">' +
+            '                <div class="contents"><li>진료과목: </li></div>' +
+            '                <div class="contents"><li>의사 수: {1}</li></div>' +
+            '                <div class="contents"><li>전문의 수: {2}</li></div>' +
+            '                <div class="contents"><li>보유 장비명: {7}</li></div>' +
+            '                <div class="contents"><li>보유 장비수: {8}</li></div>' +
+            '                <br>' +
+
+            '                <div class="ellipsis">{3}</div>' +
+            '                <div class="jibun ellipsis">(Phone)  {4}   (우) {5}</div>';
+if (data['url'] !== null){
+    content += '             <div><a href={6} target="_blank" class="link">홈페이지</a></div>'
+}
+
+content += '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '</div>';
+
+
+var content = format(content,
+    data['hospital_name'],
+    data['total_doctor_num'],
+    data['board_num'],
+    data['address'],
+    data['phone'],
+    data['zipcode'],
+    data['url'],
+    data['device_code'].length,
+    data['device_num']
+)
+
+// 마커 위에 커스텀오버레이를 표시합니다
+// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+var overlay = new kakao.maps.CustomOverlay({
+    content: content,
+    map: map,
+    position: marker.getPosition()
+});
+
+// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+kakao.maps.event.addListener(marker, 'click', function() {
+    overlay.setMap(map);
+});
+
+// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
+function closeOverlay() {
+    overlay.setMap(null);
+}
+</script>
+</div>
+</div>
+
+{% endblock %}
